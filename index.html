@@ -1,0 +1,915 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;title&gt;EVOCS · Dashboard Delivery Planner&lt;/title&gt;</p>
+<p class="p1">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>:root{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--navy:#00274E;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--navy-soft:#0B3862;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--violet:#605FFF;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--violet-pale:#EEEDFF;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green:#01E677;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green-deep:#019352;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--lime:#DBF353;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--ink:#0F2236;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--grey:#5A6B78;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--paper:#F5F7FA;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--card:#FFFFFF;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--line-soft:rgba(140,180,215,0.16);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>*{box-sizing:border-box;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin:0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:var(--navy);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background-image:</p>
+<p class="p1"><span class="Apple-converted-space">      </span>repeating-linear-gradient(0deg, var(--line-soft) 0px, var(--line-soft) 1px, transparent 1px, transparent 34px),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>repeating-linear-gradient(90deg, var(--line-soft) 0px, var(--line-soft) 1px, transparent 1px, transparent 34px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color:var(--ink);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height:100vh;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:28px 14px 60px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.sheet{ max-width:980px; margin:0 auto; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.brand-row{ display:flex; align-items:center; gap:10px; margin-bottom:18px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.logo-mark{ width:30px; height:30px; flex-shrink:0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.logo-word{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:22px; color:#fff; letter-spacing:-0.01em; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>header{ color:#EAF1F6; padding:0 4px 26px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.18em; color:var(--lime); text-transform:uppercase; margin:0 0 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>h1{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:clamp(24px, 3.6vw, 34px); margin:0 0 10px; letter-spacing:-0.01em; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>header p{ font-size:14px; color:#C3D3E0; max-width:600px; line-height:1.55; margin:0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.panel{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:var(--card); border-radius:8px; padding:22px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex; flex-wrap:wrap; gap:18px; align-items:end;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow:0 14px 32px rgba(0,0,0,0.28);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field{ display:flex; flex-direction:column; gap:6px; flex:1; min-width:170px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field label{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.09em; text-transform:uppercase; color:var(--navy); opacity:0.75; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field input{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'IBM Plex Mono', monospace; font-size:16px; padding:9px 4px 7px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border:none; border-bottom:2px solid var(--navy); background:transparent;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color:var(--ink); outline:none; width:100%;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field input:focus{ border-bottom-color:var(--violet); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field .hint{ font-size:11px; color:var(--grey); font-family:'Inter'; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button#genBtn{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:var(--violet); color:#fff; border:none; padding:12px 22px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:5px; cursor:pointer; white-space:nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition:transform 0.12s ease, box-shadow 0.12s ease;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button#genBtn:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(96,95,255,0.4); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button#genBtn:focus-visible{ outline:2px solid var(--navy); outline-offset:2px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tabbar{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex; gap:4px; margin-top:18px; background:rgba(255,255,255,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:8px; padding:4px; flex-wrap:wrap;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tabbtn{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex:1; min-width:120px; font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:12.5px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color:#C3D3E0; background:transparent; border:none; padding:10px 8px; border-radius:6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor:pointer; letter-spacing:0.01em; transition:background 0.15s ease, color 0.15s ease;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tabbtn.active{ background:var(--violet); color:#fff; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tabbtn:hover:not(.active){ background:rgba(255,255,255,0.08); color:#fff; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.result-wrap{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:var(--card); border-radius:8px; margin-top:12px; padding:26px 22px 22px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow:0 14px 32px rgba(0,0,0,0.28); display:none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.result-top-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.result-heading{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:15px; color:var(--navy); margin:0 0 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.result-sub{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--grey); margin:0 0 4px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>button#pdfBtn{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:12.5px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:#fff; color:var(--navy); border:1.5px solid var(--navy);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:8px 14px; border-radius:5px; cursor:pointer; white-space:nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition:background 0.15s ease, color 0.15s ease;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button#pdfBtn:hover{ background:var(--navy); color:#fff; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button#pdfBtn:disabled{ opacity:0.6; cursor:default; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.top-actions{ display:flex; gap:8px; flex-wrap:wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button#icsBtnTop{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:12.5px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:#fff; color:var(--navy); border:1.5px solid var(--navy);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:8px 14px; border-radius:5px; cursor:pointer; white-space:nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition:background 0.15s ease, color 0.15s ease;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button#icsBtnTop:hover{ background:var(--navy); color:#fff; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.next-up{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:var(--violet-pale); border-left:4px solid var(--violet); border-radius:5px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:12px 16px; margin:16px 0 6px; font-size:13px; color:var(--navy); line-height:1.5;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.next-up strong{ color:var(--navy); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tabpanel{ display:none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tabpanel.active{ display:block; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>h2.section-title{ font-family:'Space Grotesk', sans-serif; font-size:15px; font-weight:600; color:var(--navy); margin:22px 0 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>h2.section-title:first-child{ margin-top:0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>p.section-sub{ font-size:12.3px; color:var(--grey); margin:0 0 14px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- Ruler timeline ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ruler-scroll{ overflow-x:auto; overflow-y:visible; padding:6px 18px 14px; margin-bottom:2px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ruler{ position:relative; height:96px; min-width:700px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.phase-track{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:absolute; top:14px; left:0; right:0; height:26px; display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:3px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.phase-seg{ height:100%; position:relative; display:flex; align-items:center; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.phase-seg + .phase-seg{ border-left:1px solid rgba(255,255,255,0.55); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.phase-label{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:0 8px; font-family:'IBM Plex Mono', monospace; font-size:9.5px; font-weight:600;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing:0.02em; color:#fff; text-shadow:0 1px 1px rgba(0,0,0,0.25);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tickline{ position:absolute; top:58px; left:0; right:0; height:1px; background:#ccd6dc; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tick{ position:absolute; top:58px; width:1px; height:7px; background:#9fb0ba; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tick-label{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:absolute; top:69px; font-family:'IBM Plex Mono', monospace; font-size:9px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color:#8b9aa5; transform:translateX(-50%); white-space:nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.flag-dot{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:absolute; top:51px; width:16px; height:16px; border-radius:50%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:var(--lime); border:2px solid #fff; box-shadow:0 0 0 1px #c9de3f, 0 2px 4px rgba(0,0,0,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform:translateX(-8px); display:flex; align-items:center; justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'IBM Plex Mono', monospace; font-size:9px; font-weight:700; color:#20260a; cursor:default;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.flag-dot.done{ background:#cfd8dd; box-shadow:0 0 0 1px #b7c1c8, 0 2px 4px rgba(0,0,0,0.15); color:#3f4f5c; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.today-marker{ position:absolute; top:8px; width:2px; height:80px; background:var(--ink); opacity:0.55; transform:translateX(-1px); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.today-label{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:absolute; top:-4px; transform:translateX(-50%); font-family:'IBM Plex Mono', monospace;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size:9px; font-weight:700; color:var(--ink); background:#fff; padding:1px 5px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:3px; border:1px solid var(--ink); opacity:0.9; white-space:nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.legend{ display:flex; flex-wrap:wrap; gap:8px 16px; padding:12px 2px 2px; border-top:1px dashed #e4e9ec; margin-top:2px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.legend-item{ display:flex; align-items:center; gap:6px; font-size:11px; color:#3f4f5c; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.legend-item.done{ opacity:0.6; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.legend-num{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width:16px; height:16px; border-radius:50%; background:var(--lime); color:#20260a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'IBM Plex Mono', monospace; font-size:9px; font-weight:700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex; align-items:center; justify-content:center; flex-shrink:0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.legend-item.done .legend-num{ background:#cfd8dd; color:#3f4f5c; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- Progress stepper ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stepper-wrap{ margin-top:22px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stepper{ position:relative; height:44px; margin:10px 4px 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stepper-line{ position:absolute; top:50%; left:2%; right:2%; height:2px; background:#e4e9ec; transform:translateY(-50%); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stepper-node{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:absolute; top:50%; width:22px; height:22px; border-radius:50%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform:translate(-50%,-50%); display:flex; align-items:center; justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border:2px solid #cfd8dd; background:#fff; color:var(--grey); cursor:default;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stepper-node.done{ background:var(--green-deep); border-color:var(--green-deep); color:#fff; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stepper-node.upcoming{ background:#fff; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- RACI table ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.raci-table{ width:100%; border-collapse:collapse; font-size:12.4px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.raci-table th{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.06em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform:uppercase; color:#fff; background:var(--navy); text-align:left;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:9px 11px; font-weight:600;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.raci-table td{ padding:10px 11px; border-bottom:1px solid #e4e9ec; vertical-align:top; line-height:1.5; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.raci-table tr:last-child td{ border-bottom:none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.phase-cell{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:12.6px; color:var(--ink); white-space:nowrap; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.phase-cell .dates{ display:block; font-family:'IBM Plex Mono', monospace; font-weight:400; font-size:10px; color:var(--grey); margin-top:2px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.col-dev{ border-left:3px solid #5FA8D3; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.col-qa{ border-left:3px solid var(--violet); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.col-pm{ border-left:3px solid var(--green-deep); background:#EAFBF2; font-weight:500; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@media (max-width:680px){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.raci-table thead{ display:none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.raci-table, .raci-table tbody, .raci-table tr, .raci-table td{ display:block; width:100%; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.raci-table tr{ margin-bottom:14px; border:1px solid #e4e9ec; border-radius:4px; overflow:hidden; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.raci-table td{ border-bottom:none; padding:9px 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.raci-table td::before{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>content:attr(data-label); display:block; font-family:'IBM Plex Mono', monospace;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:var(--grey); margin-bottom:3px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ---- Checkpoint action cards ---- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.action-list{ display:flex; flex-direction:column; gap:10px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.action-card{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:grid; grid-template-columns:108px 1fr; gap:14px; padding:14px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border:1px solid #e4e9ec; border-radius:5px; background:#FBFCFD;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.action-card.needed{ border-left:4px solid var(--green-deep); background:#F3FCF7; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.action-card.monitor{ border-left:4px solid #cfd8dd; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.action-card.done{ border-left:4px solid #cfd8dd; opacity:0.7; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ac-date{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--navy); line-height:1.35; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ac-date .dow{ display:block; font-size:9.5px; color:var(--grey); letter-spacing:0.04em; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ac-body h3{ font-family:'Space Grotesk', sans-serif; font-size:13.6px; margin:0 0 5px; color:var(--ink); display:flex; align-items:center; gap:8px; flex-wrap:wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.badge{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'IBM Plex Mono', monospace; font-size:9px; font-weight:700; letter-spacing:0.05em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform:uppercase; padding:2px 8px; border-radius:10px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.badge.needed{ background:var(--green-deep); color:#fff; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.badge.monitor{ background:#e9edf0; color:var(--grey); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.badge.done{ background:#EAFBF2; color:var(--green-deep); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ac-body p{ font-size:12.4px; line-height:1.5; color:#3f4f5c; margin:0 0 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ac-body .pm-line{ color:var(--navy); font-weight:500; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ac-body .note-line{ color:var(--grey); font-size:11.6px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ac-num{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width:16px; height:16px; border-radius:50%; background:var(--lime); color:#20260a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'IBM Plex Mono', monospace; font-size:9px; font-weight:700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.checklist-label{ font-size:11px; color:var(--grey); font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:0.05em; margin:6px 0 2px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.checklist-ul{ margin:2px 0 8px; padding-left:0; list-style:none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.checklist-ul li{ position:relative; padding-left:14px; font-size:12.2px; color:#3f4f5c; line-height:1.5; margin-bottom:2px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.checklist-ul li::before{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>content:""; position:absolute; left:0; top:7px; width:6px; height:6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:50%; background:var(--dotcolor, var(--grey));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ics-block{ margin-top:22px; padding-top:16px; border-top:1px dashed #e4e9ec; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button#icsBtn{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:13.5px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:var(--navy); color:#EAF1F6; border:none; padding:11px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:5px; cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button#icsBtn:hover{ transform:translateY(-1px); box-shadow:0 6px 14px rgba(0,39,78,0.35); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ics-text{ font-size:12px; color:var(--grey); max-width:420px; line-height:1.5; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.principle-box{ background:var(--violet-pale); border-radius:6px; padding:16px 18px; margin-bottom:18px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.principle-box p{ margin:0; font-size:13px; color:var(--navy); line-height:1.55; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.trigger-list{ display:flex; flex-direction:column; gap:8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.trigger-item{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex; gap:10px; align-items:flex-start; font-size:12.6px; color:#3f4f5c;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:9px 12px; background:#FBFCFD; border:1px solid #e4e9ec; border-radius:4px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.trigger-item .dot{ width:6px; height:6px; border-radius:50%; background:var(--green-deep); margin-top:6px; flex-shrink:0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.watch-item{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex; gap:10px; align-items:flex-start; font-size:12.6px; color:#3f4f5c;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:10px 12px; background:#FBFCFD; border:1px solid #e4e9ec; border-radius:4px; margin-bottom:8px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.watch-item .dot{ width:6px; height:6px; border-radius:50%; background:var(--violet); margin-top:6px; flex-shrink:0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.watch-item strong{ color:var(--navy); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.risk-note{ margin-top:18px; font-size:12px; color:var(--grey); background:var(--paper); border-radius:4px; padding:12px 14px; line-height:1.55; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.risk-note strong{ color:var(--navy); }</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="sheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="brand-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;svg class="logo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;path d="M4 8 C4 6 6 5 8 6.5 L18 13.5 C19.5 14.5 19.5 16.5 18 17.5 L8 24.5 C6 26 4 25 4 23 Z" fill="#01E677"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;path d="M36 8 C36 6 34 5 32 6.5 L22 13.5 C20.5 14.5 20.5 16.5 22 17.5 L32 24.5 C34 26 36 25 36 23 Z" fill="#01E677"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="logo-word"&gt;evocs&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="eyebrow"&gt;Dashboard Delivery · Planning Tool&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Dashboard Delivery Planner&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Enter your project's start date and length to get a personalized QA cadence: exact checkpoint dates, who owns what at each stage and calendar reminders.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label for="startDate"&gt;Project start date&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input type="date" id="startDate"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label for="totalWeeks"&gt;Total delivery weeks&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input type="number" id="totalWeeks" min="4" max="30" value="13"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label for="uprRounds"&gt;Under Production Review (UPR) rounds (optional)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input type="number" id="uprRounds" min="1" max="6" placeholder="Default: 2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="hint"&gt;Leave blank to use the standard 2-round default&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="genBtn" onclick="generatePlan()"&gt;Generate plan&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="tabbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="tabbtn active" data-tab="timeline" onclick="switchTab('timeline')"&gt;Timeline&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="tabbtn" data-tab="raci" onclick="switchTab('raci')"&gt;Responsibilities&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="tabbtn" data-tab="actions" onclick="switchTab('actions')"&gt;Checkpoints&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="tabbtn" data-tab="reference" onclick="switchTab('reference')"&gt;Reference&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="result-wrap" id="resultWrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="result-top-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="result-heading" id="resultHeading"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="result-sub"&gt;Dates are calculated automatically from your inputs.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="top-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="icsBtnTop" onclick="downloadICS()"&gt;Download Calendar (.ics)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="pdfBtn" onclick="downloadPDF()"&gt;Download PDF&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="next-up" id="nextUpBanner"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Timeline tab --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tabpanel active" id="tab-timeline"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;Timeline at a glance&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-sub"&gt;Phases as colored bands, checkpoints as numbered markers.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ruler-scroll"&gt;&lt;div class="ruler" id="ruler"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="legend" id="legend"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stepper-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="section-title"&gt;Progress so far&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="section-sub"&gt;Same checkpoints, spaced evenly so it's easy to see how far along things are.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stepper" id="stepper"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- RACI tab --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tabpanel" id="tab-raci"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;Who owns each phase&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-sub"&gt;Developer and QA columns are for context. The PM column is what's actually on you.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;table class="raci-table"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;thead&gt;&lt;tr&gt;&lt;th style="width:16%;"&gt;Phase&lt;/th&gt;&lt;th style="width:28%;"&gt;Developer&lt;/th&gt;&lt;th style="width:28%;"&gt;QA&lt;/th&gt;&lt;th style="width:28%;"&gt;PM&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tbody id="raciBody"&gt;&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Checkpoints tab --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tabpanel" id="tab-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;Checkpoint actions&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-sub"&gt;Most checkpoints just need monitoring. "PM Action" ones are where you should actually do something. Past checkpoints are marked "Completed."&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="action-list" id="actionList"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ics-block"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="icsBtn" onclick="downloadICS()"&gt;Download calendar reminders (.ics)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="ics-text"&gt;Adds every checkpoint to your calendar as an all-day reminder, with the PM action (or "monitor only") in the notes.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Reference tab --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tabpanel" id="tab-reference"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;Core principle&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="principle-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;QA shouldn't happen only at the end. A dashboard moves through QA in stages so issues get caught early and not right before client delivery.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;A few things worth watching for&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-sub"&gt;Small build details that cause a lot of the rework later on.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="watch-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="dot"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;&lt;strong&gt;Chart type should match the data.&lt;/strong&gt; A pie chart doesn't work for something that changes over time as that needs a line or bar chart instead. Picking the wrong chart type for the data is one of the easiest things to miss and one of the most visible things a client will notice.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="watch-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="dot"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;&lt;strong&gt;Date columns need their own look.&lt;/strong&gt; Fiscal periods, YTD, rolling periods are easy to get subtly wrong. Once a date column is built, get QA to check it on its own before building more on top of it.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;When something should go to QA&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-sub"&gt;A dashboard should be submitted for review when any of the following is true.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="trigger-list" id="triggerList"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="risk-note"&gt;&lt;strong&gt;Worth knowing:&lt;/strong&gt; The dates above are a best case plan. Review and fix time is already built in but real projects don't always go exactly to schedule and can still push things back a few days depending on what the project needs.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">const REF_DAYS = 91;</p>
+<p class="p2"><br></p>
+<p class="p1">const PHASES = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ name: "Foundation", start: 0, end: 21, color: "#5FA8D3",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dev: "Connect data sources, resolve auth/gateway issues, build the data model, produce a first working view.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>qa: "Starts checking as soon as the first view is ready",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pm: "Monitor only. Step in only if the team is blocked on data source access or credentials." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ name: "Build + Review", start: 21, end: 56, color: "#605FFF",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dev: "Build filters, navigation, drill-through/drill-down, row-level security and remaining functionality across each review round.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>qa: "Checks filters/slicers, filter levels, default filters, cross-filtering, row-level security and reset-filter behavior each round.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pm: "Confirm scope is locked before the final round in this phase as changes get expensive after that." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ name: "Polish &amp; Stabilize", start: 56, end: 70, color: "#8FB8DE",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dev: "No new features - remove test data, resolve leftover issues, tighten formatting.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>qa: "No formal review this phase; spot-checks only.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pm: "Monitor only." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ name: "Final Review", start: 70, end: 84, color: "#019352",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dev: "Fix Final Review findings",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>qa: "Checks titles/tooltips, no-data states, formatting, presentation safety, that the data refresh works and gives client-ready sign-off.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pm: "Start client delivery logistics in parallel. If findings are more than cosmetic, that's your cue to step in." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ name: "Delivery", start: 84, end: 91, color: "#01E677",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dev: "Available for last-minute fixes if anything is flagged post-delivery.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>qa: "Final sign-off recorded.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pm: "Confirm delivery timing, deliver to the client, and stay available for immediate follow-up questions." },</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">function getPhaseColorForDay(day) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>for (const ph of PHASES) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (day &gt;= ph.start &amp;&amp; day &lt;= ph.end) return ph.color;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return "#8b9aa5";</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">const FIXED_MILESTONES_EARLY = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ day: 15, title: "First View Review",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>checklist: [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Dashboard values match the source data",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Sums, counts, and other calculations are correct",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"No duplicate or missing records from joins",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"All expected categories and time periods show up",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Date filters and periods work correctly",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>why: "Catches structural mistakes before more is built on top of them.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pmAction: null },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ day: 22, title: "Re-review Confirmed",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>checklist: [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Checks the items that were just fixed",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Also checks anything nearby the fix could have touched",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>why: "Keeps the history connected instead of treating every fix as a brand-new request.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pmAction: null },</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">const FIXED_MILESTONES_LATE = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ day: 71, title: "Final Review",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>checklist: [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Titles, labels, and tooltips are accurate",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"No-data situations show a clear message, not a broken chart",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Formatting and alignment are consistent",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"No test data, placeholders, or dev notes left in",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Data refresh works correctly",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Final client-ready sign-off",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>why: "The final internal QA gate before external delivery.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pmAction: "If findings are more than cosmetic, step in otherwise let the team clear it in the fix window." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ day: 81.5, title: "Sign-Off",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>checklist: [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Everything above is closed out",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"Dashboard is approved for delivery",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>why: "Confirms everything above is closed out before the client sees it.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pmAction: "Confirm the client is ready to receive, and align on exact delivery date/time." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ day: 86, title: "Client Delivery",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>checklist: ["Dashboard is delivered to the client"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>why: "The project's actual finish line.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pmAction: "Deliver to the client and stay available for immediate follow-up questions." },</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">const SUBMISSION_TRIGGERS = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"The first usable dashboard view has been created.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"A milestone or major tab is ready for review.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"Core calculations or pass-through are ready to validate.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"The dashboard is close to client delivery.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"Fixes have been made after previous QA feedback.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"All filters/slicers relevant to that stage have been tested at least once by the developer before submitting.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"Any known open issues from a previous round have been addressed or explicitly called out as not-yet-fixed with a reason.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"The developer has a specific question or area they want QA to focus on, even if the rest isn't fully ready.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"A stakeholder or client has requested a look at current progress.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"The submission includes a deadline or urgency flag so QA can prioritize accordingly.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"The data connection has been validated as live and refreshing correctly.",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"Any test data used during build has been removed or clearly flagged as still present.",</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">function buildUPRMilestones(n) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const start = 21, end = 56;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const checklist = [</p>
+<p class="p1"><span class="Apple-converted-space">    </span>"Filters and slicers show the right options and data",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>"No hidden exclusions in the filters",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>"Default filters open to the right view",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>"Cross-filtering and drill-through work correctly",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>"Row-level security shows only what each user should see",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>"Reset filters returns to the default view",</p>
+<p class="p1"><span class="Apple-converted-space">  </span>];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const rounds = [];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>for (let i = 1; i &lt;= n; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const day = start + (i / n) * (end - start);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const isLast = i === n;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const title = isLast ? "Full Review (Feature-Complete)" : (n === 1 ? "Full Review (Feature-Complete)" : `UPR Review #${i}`);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>rounds.push({</p>
+<p class="p1"><span class="Apple-converted-space">      </span>day,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>title,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>checklist,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>why: isLast</p>
+<p class="p1"><span class="Apple-converted-space">        </span>? "Every feature gets reviewed in full - this is the last easy point to make big changes."</p>
+<p class="p1"><span class="Apple-converted-space">        </span>: "Creates a checkpoint mid-build so the team doesn't build too far on top of broken logic.",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>pmAction: isLast ? "Confirm scope is locked from here on - changes get expensive after this point." : null,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>note: "Includes a fix and re-review pass before moving to the next checkpoint.",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return rounds;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function addDays(date, days) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const d = new Date(date);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>d.setDate(d.getDate() + Math.round(days));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return d;</p>
+<p class="p1">}</p>
+<p class="p1">function fmtDate(d) { return d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }); }</p>
+<p class="p1">function fmtDow(d) { return d.toLocaleDateString(undefined, { weekday: "long" }); }</p>
+<p class="p1">function icsDate(d) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,"0"), day = String(d.getDate()).padStart(2,"0");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return `${y}${m}${day}`;</p>
+<p class="p1">}</p>
+<p class="p1">function icsEscape(t) { return t.replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n"); }</p>
+<p class="p2"><br></p>
+<p class="p1">let currentICSEvents = [];</p>
+<p class="p2"><br></p>
+<p class="p1">function switchTab(name) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll(".tabbtn").forEach(b =&gt; b.classList.toggle("active", b.dataset.tab === name));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll(".tabpanel").forEach(p =&gt; p.classList.toggle("active", p.id === "tab-" + name));</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function generatePlan() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const startVal = document.getElementById("startDate").value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const weeksVal = parseFloat(document.getElementById("totalWeeks").value);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const uprInput = document.getElementById("uprRounds").value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const uprRounds = uprInput ? Math.max(1, Math.min(6, parseInt(uprInput, 10))) : 2;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!startVal) { alert("Pick a project start date first."); return; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!weeksVal || weeksVal &lt; 2) { alert("Enter a total delivery window of at least 2 weeks."); return; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const startDate = new Date(startVal + "T00:00:00");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const totalDays = weeksVal * 7;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const scale = totalDays / REF_DAYS;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const now = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const daysSinceStart = Math.round((todayMidnight - startDate) / 86400000);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>let progressMode;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (daysSinceStart &lt; 0) progressMode = "future";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>else if (daysSinceStart &gt; totalDays) progressMode = "complete";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>else progressMode = "inprogress";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("resultWrap").style.display = "block";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const endDate = addDays(startDate, totalDays);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("resultHeading").textContent =</p>
+<p class="p1"><span class="Apple-converted-space">    </span>`${weeksVal}-week plan · ${fmtDate(startDate)} → ${fmtDate(endDate)} · ${uprRounds} UPR round${uprRounds &gt; 1 ? "s" : ""}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const allMilestones = [</p>
+<p class="p1"><span class="Apple-converted-space">    </span>...FIXED_MILESTONES_EARLY,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>...buildUPRMilestones(uprRounds),</p>
+<p class="p1"><span class="Apple-converted-space">    </span>...FIXED_MILESTONES_LATE,</p>
+<p class="p1"><span class="Apple-converted-space">  </span>].sort((a, b) =&gt; a.day - b.day);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Filter to what fits in the timeline and tag each with done/upcoming</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let num = 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const filteredMilestones = [];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>allMilestones.forEach(m =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const scaledDay = m.day * scale;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (scaledDay &gt; totalDays) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>num++;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const done = progressMode === "complete" ? true : (progressMode === "future" ? false : scaledDay &lt;= daysSinceStart);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>filteredMilestones.push({ ...m, num, scaledDay, done, phaseColor: getPhaseColorForDay(m.day) });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// ---- Ruler ----</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const ruler = document.getElementById("ruler");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>ruler.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>ruler.style.minWidth = Math.max(700, weeksVal * 66) + "px";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const track = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>track.className = "phase-track";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>PHASES.forEach(ph =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const seg = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>seg.className = "phase-seg";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>seg.style.width = (((ph.end - ph.start) / REF_DAYS) * 100) + "%";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>seg.style.background = ph.color;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const lbl = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>lbl.className = "phase-label";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>lbl.textContent = ph.name;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>seg.appendChild(lbl);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>track.appendChild(seg);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>ruler.appendChild(track);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const tickline = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>tickline.className = "tickline";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>ruler.appendChild(tickline);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const weekCount = Math.round(weeksVal);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>for (let w = 0; w &lt;= weekCount; w++) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const posPct = (w * 7 / totalDays) * 100;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (posPct &gt; 100.5) continue;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const tick = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tick.className = "tick"; tick.style.left = posPct + "%";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ruler.appendChild(tick);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const tlabel = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tlabel.className = "tick-label";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tlabel.style.left = posPct + "%";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (posPct &lt;= 3) tlabel.style.transform = "translateX(0)";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>else if (posPct &gt;= 97) tlabel.style.transform = "translateX(-100%)";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tlabel.textContent = "W" + w;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ruler.appendChild(tlabel);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (progressMode === "inprogress") {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const todayPct = (daysSinceStart / totalDays) * 100;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const todayLine = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>todayLine.className = "today-marker";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>todayLine.style.left = todayPct + "%";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ruler.appendChild(todayLine);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const todayLabel = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>todayLabel.className = "today-label";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>todayLabel.style.left = todayPct + "%";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (todayPct &lt;= 5) todayLabel.style.transform = "translateX(0)";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>else if (todayPct &gt;= 95) todayLabel.style.transform = "translateX(-100%)";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>todayLabel.textContent = "Today";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ruler.appendChild(todayLabel);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const legend = document.getElementById("legend");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>legend.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>filteredMilestones.forEach(m =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const posPct = (m.scaledDay / totalDays) * 100;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const dot = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dot.className = "flag-dot" + (m.done ? " done" : "");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>dot.style.left = posPct + "%"; dot.textContent = m.num; dot.title = m.title;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ruler.appendChild(dot);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const li = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>li.className = "legend-item" + (m.done ? " done" : "");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>li.innerHTML = `&lt;span class="legend-num"&gt;${m.done ? "✓" : m.num}&lt;/span&gt;${m.title}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>legend.appendChild(li);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// ---- Stepper ----</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const stepper = document.getElementById("stepper");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>stepper.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const stepperLine = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>stepperLine.className = "stepper-line";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>stepper.appendChild(stepperLine);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>filteredMilestones.forEach((m, idx) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pct = filteredMilestones.length &gt; 1 ? (idx / (filteredMilestones.length - 1)) * 96 + 2 : 50;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const node = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>node.className = "stepper-node " + (m.done ? "done" : "upcoming");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>node.style.left = pct + "%";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>node.textContent = m.done ? "✓" : m.num;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>node.title = m.title;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>stepper.appendChild(node);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// ---- Next up banner ----</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const nextUpEl = document.getElementById("nextUpBanner");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (progressMode === "complete") {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const last = filteredMilestones[filteredMilestones.length - 1];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const d = addDays(startDate, last.scaledDay);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>nextUpEl.innerHTML = `&lt;strong&gt;Project complete.&lt;/strong&gt; Last checkpoint was ${last.title} on ${fmtDate(d)}.`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} else if (progressMode === "future") {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const daysToStart = -daysSinceStart;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const first = filteredMilestones[0];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const d = addDays(startDate, first.scaledDay);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>nextUpEl.innerHTML = `&lt;strong&gt;Starts in ${daysToStart} day${daysToStart === 1 ? "" : "s"}.&lt;/strong&gt; First checkpoint: ${first.title} on ${fmtDate(d)}.`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const next = filteredMilestones.find(m =&gt; !m.done);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (next) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const d = addDays(startDate, next.scaledDay);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const daysUntil = Math.ceil((d - todayMidnight) / 86400000);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const when = daysUntil &lt;= 0 ? "today" : `in ${daysUntil} day${daysUntil === 1 ? "" : "s"}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>nextUpEl.innerHTML = `&lt;strong&gt;Next up:&lt;/strong&gt; ${next.title} — ${when} (${fmtDate(d)}).`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>nextUpEl.innerHTML = `&lt;strong&gt;All checkpoints done.&lt;/strong&gt; Nice work.`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// ---- RACI table ----</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const raciBody = document.getElementById("raciBody");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>raciBody.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>PHASES.forEach(ph =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const s = addDays(startDate, ph.start * scale);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const e = addDays(startDate, ph.end * scale);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const tr = document.createElement("tr");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tr.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;td class="phase-cell" data-label="Phase"&gt;${ph.name}&lt;span class="dates"&gt;${fmtDate(s)} – ${fmtDate(e)}&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;td class="col-dev" data-label="Developer"&gt;${ph.dev}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;td class="col-qa" data-label="QA"&gt;${ph.qa}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;td class="col-pm" data-label="PM"&gt;${ph.pm}&lt;/td&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>raciBody.appendChild(tr);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// ---- Checkpoint action list ----</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const actionList = document.getElementById("actionList");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>actionList.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>currentICSEvents = [];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>filteredMilestones.forEach(m =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const d = addDays(startDate, m.scaledDay);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const needsAction = !!m.pmAction;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let badgeClass, badgeText;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (m.done) { badgeClass = "done"; badgeText = "Completed"; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>else if (needsAction) { badgeClass = "needed"; badgeText = "PM Action"; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>else { badgeClass = "monitor"; badgeText = "Monitor Only"; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const checklistHTML = `&lt;p class="checklist-label"&gt;Checks&lt;/p&gt;&lt;ul class="checklist-ul"&gt;${</p>
+<p class="p1"><span class="Apple-converted-space">      </span>m.checklist.map(c =&gt; `&lt;li style="--dotcolor:${m.phaseColor}"&gt;${c}&lt;/li&gt;`).join("")</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}&lt;/ul&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const card = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>card.className = "action-card " + (m.done ? "done" : (needsAction ? "needed" : "monitor"));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>card.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ac-date"&gt;${fmtDate(d)}&lt;span class="dow"&gt;${fmtDow(d)}&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ac-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;&lt;span class="ac-num"&gt;${m.num}&lt;/span&gt;${m.title} &lt;span class="badge ${badgeClass}"&gt;${badgeText}&lt;/span&gt;&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;${m.why}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>${checklistHTML}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>${m.note ? `&lt;p class="note-line"&gt;${m.note}&lt;/p&gt;` : ``}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>${(!m.done &amp;&amp; needsAction) ? `&lt;p class="pm-line"&gt;→ ${m.pmAction}&lt;/p&gt;` : ``}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>actionList.appendChild(card);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let desc = m.checklist.join("; ") + ". " + m.why;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>desc += needsAction ? " PM action: " + m.pmAction : " No PM action needed — monitor only.";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>currentICSEvents.push({ date: d, title: m.title, description: desc });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// ---- Reference tab: triggers ----</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const triggerList = document.getElementById("triggerList");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>triggerList.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>SUBMISSION_TRIGGERS.forEach(t =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const item = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>item.className = "trigger-item";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>item.innerHTML = `&lt;span class="dot"&gt;&lt;/span&gt;&lt;span&gt;${t}&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>triggerList.appendChild(item);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function downloadICS() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!currentICSEvents.length) { alert("Generate a plan first."); return; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let ics = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//EVOCS Dashboard Delivery Planner//EN\r\nCALSCALE:GREGORIAN\r\n";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const stamp = icsDate(new Date()) + "T000000Z";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>currentICSEvents.forEach((ev, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const dt = icsDate(ev.date);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ics += "BEGIN:VEVENT\r\n";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ics += `UID:evocs-planner-${dt}-${i}@dashboard-project\r\n`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ics += `DTSTAMP:${stamp}\r\n`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ics += `DTSTART;VALUE=DATE:${dt}\r\n`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ics += `SUMMARY:${icsEscape("Dashboard Project: " + ev.title)}\r\n`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ics += `DESCRIPTION:${icsEscape(ev.description)}\r\n`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ics += "END:VEVENT\r\n";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>ics += "END:VCALENDAR\r\n";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const url = URL.createObjectURL(blob);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const a = document.createElement("a");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>a.href = url; a.download = "evocs_dashboard_checkpoints.ics";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.body.appendChild(a); a.click(); document.body.removeChild(a);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>URL.revokeObjectURL(url);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">async function downloadPDF() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const pdfBtn = document.getElementById("pdfBtn");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const resultWrap = document.getElementById("resultWrap");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const panels = document.querySelectorAll(".tabpanel");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const ruler = document.getElementById("ruler");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (typeof html2canvas === "undefined" || typeof window.jspdf === "undefined") {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>alert("Couldn't load the PDF tools. Check your internet connection and try again.");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const originalText = pdfBtn.textContent;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>pdfBtn.textContent = "Building PDF…";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>pdfBtn.disabled = true;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Show every tab's content, not just the active one</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const activeStates = [];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>panels.forEach(p =&gt; { activeStates.push(p.classList.contains("active")); p.style.display = "block"; });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Hide buttons that shouldn't show up in the PDF</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const hideEls = [pdfBtn, document.getElementById("icsBtnTop"), document.getElementById("icsBtn"), document.querySelector(".ics-text")].filter(Boolean);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const prevDisplays = hideEls.map(el =&gt; el.style.display);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>hideEls.forEach(el =&gt; el.style.display = "none");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Shrink the timeline ruler to fit the page width instead of its normal scroll width.</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// All the marks on it are positioned by percentage, so this just rescales it cleanly.</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const prevRulerWidth = ruler.style.width;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const prevRulerMinWidth = ruler.style.minWidth;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>ruler.style.minWidth = "0";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>ruler.style.width = "100%";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Give the browser a moment to apply the layout changes before measuring anything</p>
+<p class="p1"><span class="Apple-converted-space">  </span>await new Promise(resolve =&gt; setTimeout(resolve, 50));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Elements that should never be sliced across a page break</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const atomicSelectors = [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>".next-up", ".ruler-scroll", ".legend", ".stepper-wrap",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>".raci-table tr", ".action-card", ".principle-box", ".watch-item",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>".trigger-item", ".risk-note",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>]; // h2.section-title is handled separately below, glued to whatever follows it</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const wrapRect = resultWrap.getBoundingClientRect();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const totalHeightCSS = resultWrap.scrollHeight;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const boundaries = new Set([0, totalHeightCSS]);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addBoundary(pxFromViewportTop) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const rel = Math.round(pxFromViewportTop - wrapRect.top);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (rel &gt;= 0 &amp;&amp; rel &lt;= totalHeightCSS) boundaries.add(rel);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.querySelectorAll(atomicSelectors.join(",")).forEach(el =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const r = el.getBoundingClientRect();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>addBoundary(r.top);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>addBoundary(r.bottom);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// A heading and whatever immediately follows it stay together —</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// no cutting a page right after a title with its content stranded on the next page</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.querySelectorAll("h2.section-title").forEach(h =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const hRect = h.getBoundingClientRect();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const sibling = h.nextElementSibling;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const groupBottom = sibling ? sibling.getBoundingClientRect().bottom : hRect.bottom;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>addBoundary(hRect.top);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>addBoundary(groupBottom);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const sortedBoundaries = Array.from(boundaries).sort((a, b) =&gt; a - b);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const canvas = await html2canvas(resultWrap, { scale: 2, backgroundColor: "#ffffff", useCORS: true });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const scaleFactor = canvas.height / totalHeightCSS; // canvas px per CSS px</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pdf = new window.jspdf.jsPDF("p", "pt", "a4");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pageWidthPt = pdf.internal.pageSize.getWidth();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pageHeightPt = pdf.internal.pageSize.getHeight();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const ptPerCssPx = pageWidthPt / wrapRect.width;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const cssPerPage = pageHeightPt / ptPerCssPx;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Find safe cut points — never inside an atomic element</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const cuts = [0];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let current = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let guard = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>while (current &lt; totalHeightCSS - 0.5 &amp;&amp; guard &lt; 500) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>guard++;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const target = current + cssPerPage;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (target &gt;= totalHeightCSS) { cuts.push(totalHeightCSS); break; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let candidate = null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (const b of sortedBoundaries) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (b &gt; current &amp;&amp; b &lt;= target) candidate = b;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (b &gt; target) break;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (candidate === null) candidate = target; // a single element taller than a page — unavoidable</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cuts.push(candidate);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>current = candidate;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>for (let i = 0; i &lt; cuts.length - 1; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const sliceTopCss = cuts[i];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const sliceBottomCss = cuts[i + 1];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const sliceTopPx = Math.round(sliceTopCss * scaleFactor);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const sliceHeightPx = Math.round((sliceBottomCss - sliceTopCss) * scaleFactor);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (sliceHeightPx &lt;= 0) continue;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const pageCanvas = document.createElement("canvas");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>pageCanvas.width = canvas.width;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>pageCanvas.height = sliceHeightPx;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>pageCanvas.getContext("2d").drawImage(</p>
+<p class="p1"><span class="Apple-converted-space">        </span>canvas, 0, sliceTopPx, canvas.width, sliceHeightPx, 0, 0, canvas.width, sliceHeightPx</p>
+<p class="p1"><span class="Apple-converted-space">      </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const pageImgData = pageCanvas.toDataURL("image/png");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const sliceHeightPt = (sliceHeightPx / scaleFactor) * ptPerCssPx;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (i &gt; 0) pdf.addPage();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>pdf.addImage(pageImgData, "PNG", 0, 0, pageWidthPt, sliceHeightPt);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>pdf.save("evocs_dashboard_plan.pdf");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} catch (err) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>console.error(err);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>alert("Something went wrong building the PDF. Please try again.");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} finally {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>panels.forEach((p, i) =&gt; { p.style.display = activeStates[i] ? "block" : "none"; });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>hideEls.forEach((el, i) =&gt; { el.style.display = prevDisplays[i]; });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ruler.style.width = prevRulerWidth;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ruler.style.minWidth = prevRulerMinWidth;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pdfBtn.textContent = originalText;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pdfBtn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">window.addEventListener("DOMContentLoaded", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("startDate").value = new Date().toISOString().split("T")[0];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>generatePlan();</p>
+<p class="p1">});</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
